@@ -1,23 +1,22 @@
 "use client";
 
 import Link from 'next/link';
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const Sidebar = () => {
-  if(typeof window !== "undefined") {
-    if(localStorage.getItem('dark')) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }
+   const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if(!mounted) return null
+
 
   const darkMode = () => {
-    document.documentElement.classList.toggle('dark');
-    if (document.documentElement.classList.contains('dark')) {
-      localStorage.setItem('dark', 'true');
-    } else {
-      localStorage.removeItem('dark');
-    }
+    console.log('dark mode');
   };
 
   return(
@@ -32,7 +31,7 @@ const Sidebar = () => {
         </div>
         </Link>
 
-        <Link href="/hakkimda">
+        <Link href="/profile">
         <div className="w-8 h-8 inline-flex items-center justify-center text-center text-xl">
           <svg id="icon" xmlns="http://www.w3.org/2000/svg" className="fill-current text-bsonmezprimary dark:text-gray-300" width="32" height="32" viewBox="0 0 32 32">
             <path d="M16,4a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,16,2Z"/>
@@ -51,7 +50,7 @@ const Sidebar = () => {
         </div>
         </Link>
 
-        <Link href="/portfolyo">
+        <Link href="/portfolio">
         <div className="w-8 h-8 inline-flex items-center justify-center text-center text-xl">
           <svg id="icon" xmlns="http://www.w3.org/2000/svg" className="fill-current text-bsonmezprimary dark:text-gray-300" width="32" height="32" viewBox="0 0 32 32">
             <path d="M28,10H22V6a2,2,0,0,0-2-2H12a2,2,0,0,0-2,2v4H4a2,2,0,0,0-2,2V26a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V12A2,2,0,0,0,28,10ZM12,6h8v4H12ZM4,26V12H28V26Z"/>
@@ -67,7 +66,7 @@ const Sidebar = () => {
         </div>
         </Link>
 
-        <Link href="/iletisim">
+        <Link href="/contact">
         <div className="w-8 h-8 inline-flex items-center justify-center text-center text-xl">
           <svg id="icon" xmlns="http://www.w3.org/2000/svg" className="fill-current text-bsonmezprimary dark:text-gray-300" width="32" height="32" viewBox="0 0 32 32">
             <path d="M28,6H4A2,2,0,0,0,2,8V24a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V8A2,2,0,0,0,28,6ZM25.8,8,16,14.78,6.2,8ZM4,24V8.91l11.43,7.91a1,1,0,0,0,1.14,0L28,8.91V24Z" transform="translate(0)"/>
@@ -75,7 +74,7 @@ const Sidebar = () => {
         </div>
         </Link>
 
-        <button type="button" onClick={() => darkMode()}>
+        <button type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
         <div className="w-8 h-8 inline-flex dark:hidden items-center justify-center text-center text-xl">
           <svg id="icon" xmlns="http://www.w3.org/2000/svg" className="fill-current text-bsonmezprimary dark:text-gray-300" width="32" height="32" viewBox="0 0 32 32">
             <path d="M14.98,3a1.0024,1.0024,0,0,0-.1746.0156A13.0959,13.0959,0,0,0,16.63,28.9973c.1641.006.3282,0,.4909,0a13.0724,13.0724,0,0,0,10.702-5.5556,1.0094,1.0094,0,0,0-.7833-1.5644A13.08,13.08,0,0,1,15.8892,4.38,1.0149,1.0149,0,0,0,14.98,3Z"/>
@@ -100,7 +99,7 @@ const Sidebar = () => {
         </div>
         </Link>
 
-        <Link href="/hakkimda">
+        <Link href="/profile">
         <div className="w-8 h-8 inline-flex items-center justify-center text-center text-xl">
           <svg id="icon" xmlns="http://www.w3.org/2000/svg" className="fill-current text-bsonmezprimary dark:text-gray-300" width="32" height="32" viewBox="0 0 32 32">
             <path d="M16,4a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,16,2Z"/>
@@ -117,7 +116,7 @@ const Sidebar = () => {
         </div>
         </Link>
 
-        <Link href="/iletisim">
+        <Link href="/contact">
         <div className="w-8 h-8 inline-flex items-center justify-center text-center text-xl">
           <svg id="icon" xmlns="http://www.w3.org/2000/svg" className="fill-current text-bsonmezprimary dark:text-gray-300" width="32" height="32" viewBox="0 0 32 32">
             <path d="M28,6H4A2,2,0,0,0,2,8V24a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V8A2,2,0,0,0,28,6ZM25.8,8,16,14.78,6.2,8ZM4,24V8.91l11.43,7.91a1,1,0,0,0,1.14,0L28,8.91V24Z" transform="translate(0)"/>

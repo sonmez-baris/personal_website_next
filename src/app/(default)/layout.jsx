@@ -7,7 +7,7 @@ const MainLayout = ({ children }) => {
   return(
     <main className="w-full md:w-160 h-full mx-auto">
       <Sidebar />
-      <div className="w-full md:w-150 mx-auto border-l-2 border-r-2 border-gray-200 dark:border-gray-700 max-h overflow-y-auto">
+      <div className="w-full md:w-150 mx-auto border-l-2 border-r-2 border-gray-200 dark:border-gray-700 max-h overflow-y-auto h-screen">
         <TopBar msg={'Bugün onların olsun, ama uğrunda çok uğraştığım gelecek benimdir!'} />
         {children}
         <Footer />
