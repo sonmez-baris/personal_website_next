@@ -30,4 +30,28 @@
   html {
     font-family: 'Fira Code', monospace !important;
   }
+
+  /* Tüm scroll barları özelleştirme */
+  ::-webkit-scrollbar {
+    width: 2px;
+    /* Scroll bar genişliği */
+  }
+
+  /* Scroll bar yuvasını (track) özelleştirme */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Yuva rengi */
+  }
+
+  /* Scroll bar tutamacını (thumb) özelleştirme */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Tutamacın rengi */
+  }
+
+  /* Scroll bar tutamacı üzerine gelindiğinde */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Hover rengi */
+  }
 }
