@@ -1,35 +1,33 @@
+"use client";
+
+import React from "react";
+import TagService from '@/services/tag-service';
+import SWRError from '@/components/swr-error';
+import useSWR from 'swr';
+import {Skeleton} from "@nextui-org/react";
+
+const fetcher = () => TagService.get();
+
 const Skills = () => {
+  
+  const { data, error } = useSWR(`/tags`, fetcher, { revalidateOnFocus: false });
+  if (error) return <div className="flex px-2 flex-row mt-6 flex-wrap w-full"><SWRError error={"Veriler yüklenirken bir hata oluştu."} /></div>;
+  if (!data) {
+    return (
+      <div className="flex px-2 flex-row mt-6 flex-wrap w-full gap-1">
+        {Array.from({ length: 20 }).map((_, index) => {
+          return <Skeleton key={index} className="h-5 w-14 rounded-lg" />;
+        })}
+      </div>
+    );
+  }
+
+
   return (
     <div className="flex px-2 flex-row mt-6 flex-wrap w-full">
-      <span className="skill-tag">php</span>
-      <span className="skill-tag">php</span>
-      <span className="skill-tag">javascript</span>
-      <span className="skill-tag">flutter</span>
-      <span className="skill-tag">dart</span>
-      <span className="skill-tag">html</span>
-      <span className="skill-tag">css</span>
-      <span className="skill-tag">laravel</span>
-      <span className="skill-tag">codeigniter</span>
-      <span className="skill-tag">sql</span>
-      <span className="skill-tag">vue</span>
-      <span className="skill-tag">tailwind</span>
-      <span className="skill-tag">bootstrap</span>
-      <span className="skill-tag">aermod</span>
-      <span className="skill-tag">illustrator</span>
-      <span className="skill-tag">photoshop</span>
-      <span className="skill-tag">fireworks</span>
-      <span className="skill-tag">premiere</span>
-      <span className="skill-tag">kicad</span>
-      <span className="skill-tag">easyeda</span>
-      <span className="skill-tag">figma</span>
-      <span className="skill-tag">avr</span>
-      <span className="skill-tag">surfer</span>
-      <span className="skill-tag">autocad</span>
-      <span className="skill-tag">blender</span>
-      <span className="skill-tag">cinema4d</span>
-      <span className="skill-tag">netcad</span>
-      <span className="skill-tag">pwa</span>
-      <span className="skill-tag">jquery</span>
+      {data.data.map((tag, index) => (
+      <span key={index} className="skill-tag">{tag.title}</span>
+      ))}
     </div>
   )
 }

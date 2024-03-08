@@ -1,9 +1,9 @@
 import {config} from '@/config';
 
-const TagService = {
-  get: async () => {
+const PostService = {
+  get: async (params) => {
     try{
-      const response = await fetch(`${config.API_URL}/tags`, {
+      const response = await fetch(`${config.API_URL}/posts?${params}`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json', 
@@ -14,9 +14,9 @@ const TagService = {
       return error.response;
     }
   },
-  show: async (tag) => {
+  show: async (seflink) => {
     try {
-      const response = await fetch(`${config.API_URL}/tag/${tag}`, {
+      const response = await fetch(`${config.API_URL}/posts/${seflink}`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json', 
@@ -30,4 +30,4 @@ const TagService = {
   },
 };
 
-export default TagService;
+export default PostService;
