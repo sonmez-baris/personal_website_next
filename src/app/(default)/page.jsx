@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
     <div className="flex px-2 py-4">
-      <div className="w-20 h-20 flex-shrink-0"><Image src="/img/baris.jpg" alt="Barış Sönmez" width={80} height={80} className="object-cover rounded-full" /></div>
+      <div className="w-20 h-20 flex-shrink-0"><Image src="/img/profile.jpg" alt="Barış Sönmez" width={80} height={80} className="object-cover rounded-full" /></div>
         <div className="ml-2">
           <p className="text-sm">Merhaba, ben Barış Sönmez.<br />
           Antalya’da yaşayan, full stack web & mobil uygulama geliştiricisiyim.</p>
